@@ -1,7 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <section>
-  <h2>Ideias</h2>
-  <br />
-    <h1>Casuais</h1>  
+  <h2>C:\> Ideias Casuais
+    <span class="blinking-cursor">|</span>
+  </h2>
 </section>
-<mat-toolbar color="primary">My App</mat-toolbar>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button>
+      <span class="label">Home </span>
+    </button>
+    <button mat-button>
+      <span class="label">Tags </span>
+    </button>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">favorite</mat-icon>
+    <mat-icon class="example-icon">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="60" *ngFor="let item of anuncios | async">{{item.content}}</mat-card>
+</div>

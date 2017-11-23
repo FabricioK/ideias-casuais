@@ -1,18 +1,66 @@
-section 
-    margin-left: 25%
-    margin-right: 25%
-    margin-bottm: 20px
-    h1 
-        font-family: 'Sacramento', cursive
-        font-size: 300px  
-        font-weight: 90 
-        line-height: 150px
-        margin: 0px
+section     
+    background-image: url('/assets/bg.png');
+    background-repeat: no-repeat;
+    height: 290px
+    margin-left: 15% 
     h2
-        font-family: 'Sacramento', cursive
-        font-size: 270px  
-        font-weight: 100 
-        line-height: 290px  
-        margin: 0px
+        font-family: 'Special Elite', cursive;
+        font-size: 50px;
+        font-weight: 50; 
+        line-height: 190px;
+        margin-left: 200px
+
+.label
+    font-family: 'Special Elite', cursive;
     // h6 starts at $base-font-size 
 // headings grow from h6 to h1 by $heading-scale
+
+.example-icon 
+  padding: 0 14px;
+
+
+.example-spacer 
+  flex: 1 1 auto;
+
+.blinking-cursor 
+    color: #2E3D48;
+    -webkit-animation: 1.5s blink step-end infinite;
+    -moz-animation: 1.5s blink step-end infinite;
+    -ms-animation: 1.5s blink step-end infinite;
+    -o-animation: 1.5s blink step-end infinite;
+    animation: 1.5s blink step-end infinite;
+
+
+@keyframes "blink" 
+  from, to 
+    color: transparent;  
+  50% 
+    color: black;
+
+@-moz-keyframes blink 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: black;
+@-webkit-keyframes "blink" 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: black;
+
+@-ms-keyframes "blink" 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: black;
+
+@-o-keyframes "blink" 
+  from, to 
+    color: transparent;
+
+  50% 
+    color: black;
+  
