@@ -18,6 +18,17 @@
     <mat-icon class="example-icon">delete</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
-<div fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="60" *ngFor="let item of anuncios | async">{{item.content}}</mat-card>
+<div fxLayout="row" fxLayoutWrap>
+  <mat-card fxFlex="66" fxFlexOffset="15" *ngFor="let item of anuncios | async">
+    <mat-card-header>
+    </mat-card-header>
+    <img mat-card-image />
+    <mat-card-content>
+      {{item.content}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
