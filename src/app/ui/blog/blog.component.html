@@ -1,10 +1,10 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav opened mode="side" position="end">
+  <mat-sidenav  fxFlex="66" fxFlexOffset="15" #sidenav opened mode="side" position="end">
     Sidenav content
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <section fxFlex="66" fxFlexOffset="15" *ngFor="let item of anuncios | async">
+    <section *ngFor="let item of anuncios | async">
       <span class="previewTitle">{{item.title}}</span>
       <div class="preview">
         <a class="imageHolder"><img src="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-437x230.jpg" srcset="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-437x230.jpg 1x, https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-760x400.jpg 2x" alt="Grammarly Spotlight: Why Hedging Language Undermines Your Writing"></a>
@@ -12,7 +12,6 @@
           <div class=previewExcerpt>
             {{item.content}}
           </div>
-
         </div>
       </div>
     </section>
