@@ -1,0 +1,74 @@
+\:host
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+$blinkColor : white;
+
+.header--header-categories  
+    h1
+        font-family: 'Special Elite', cursive;
+        font-size: 32px;
+        margin-right: 100px;
+    a
+        position: relative;
+        display: inline-block;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 10px;
+        background-size: contain;
+        color: $blinkColor;//#15c39a;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+        letter-spacing: 1px;
+        font-size: 16px;
+
+.example-spacer 
+  flex: 1 1 auto;
+  
+
+.blinking-cursor 
+    //color: #2E3D48;
+    -webkit-animation: 1.5s blink step-end infinite;
+    -moz-animation: 1.5s blink step-end infinite;
+    -ms-animation: 1.5s blink step-end infinite;
+    -o-animation: 1.5s blink step-end infinite;
+    animation: 1.5s blink step-end infinite;
+
+
+@keyframes "blink" 
+  from, to 
+    color: transparent;  
+  50% 
+    color: $blinkColor;
+
+@-moz-keyframes blink 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: $blinkColor;
+@-webkit-keyframes "blink" 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: $blinkColor;
+
+@-ms-keyframes "blink" 
+  from, to 
+    color: transparent;
+  
+  50% 
+    color: $blinkColor;
+
+@-o-keyframes "blink" 
+  from, to 
+    color: transparent;
+
+  50% 
+    color: $blinkColor;
+  

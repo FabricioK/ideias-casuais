@@ -1,16 +1,26 @@
+body
+  margin: 0;
+  padding: 0;
+  background-color: #cccccc;
+ 
+.title-section
+  background-image: url('/assets/bg.jpg'); 
+  background-repeat: no-repeat;
+  
+.main-section
+  margin-top: 200px;
+  
 mat-card
+  height: 100%;
   margin: 20px;
-section     
-    background-image: url('/assets/bg.png');
-    background-repeat: no-repeat;
-    height: 290px
-    margin-left: 15% 
+  
+section         
     h2
         font-family: 'Special Elite', cursive;
         font-size: 50px;
         font-weight: 50; 
-        line-height: 190px;
-        margin-left: 200px
+        line-height: 180px;
+        margin-left: 300px
 
 .label
     font-family: 'Special Elite', cursive;
@@ -23,46 +33,3 @@ section
 
 .example-spacer 
   flex: 1 1 auto;
-
-.blinking-cursor 
-    color: #2E3D48;
-    -webkit-animation: 1.5s blink step-end infinite;
-    -moz-animation: 1.5s blink step-end infinite;
-    -ms-animation: 1.5s blink step-end infinite;
-    -o-animation: 1.5s blink step-end infinite;
-    animation: 1.5s blink step-end infinite;
-
-
-@keyframes "blink" 
-  from, to 
-    color: transparent;  
-  50% 
-    color: black;
-
-@-moz-keyframes blink 
-  from, to 
-    color: transparent;
-  
-  50% 
-    color: black;
-@-webkit-keyframes "blink" 
-  from, to 
-    color: transparent;
-  
-  50% 
-    color: black;
-
-@-ms-keyframes "blink" 
-  from, to 
-    color: transparent;
-  
-  50% 
-    color: black;
-
-@-o-keyframes "blink" 
-  from, to 
-    color: transparent;
-
-  50% 
-    color: black;
-  

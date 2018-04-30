@@ -1,34 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
-<section>
-  <h2>C:\> Ideias Casuais
-    <span class="blinking-cursor">|</span>
-  </h2>
+<app-navbar></app-navbar>
+<section class="title-section">
 </section>
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-button>
-      <span class="label">Home </span>
-    </button>
-    <button mat-button>
-      <span class="label">Tags </span>
-    </button>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
-<div fxLayout="row" fxLayoutWrap>
-  <mat-card fxFlex="66" fxFlexOffset="15" *ngFor="let item of anuncios | async">
-    <mat-card-header>
-    </mat-card-header>
-    <img mat-card-image />
-    <mat-card-content>
-      {{item.content}}
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
+<section class="main-section">
+  <mat-card flex=1:1>
+    <router-outlet></router-outlet>
   </mat-card>
-</div>
+</section>
