@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav fxFlex="66" fxFlexOffset="15" #sidenav opened mode="side" position="end">
     <section class="sidebar-container" *ngFor="let item of trending | async">
-      <div class="sidebar-label" >
+      <div class="sidebar-label">
         <span>Trending</span>
       </div>
       <div class="sidebar-content">
@@ -9,15 +9,15 @@
           <img src="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Overused-Adjectives-235x124.gif" srcset="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Overused-Adjectives-235x124.gif 1x, https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Overused-Adjectives-437x230.gif 2x"
             alt="Here Are the 10 Most Overused Words in Your Writing">
           <span class="sidebar-title">Here Are the 10 Most Overused Words in Your Writing</span>
-          <span class="sidebar-footnote"
-            data-reactid="128">3031 shares</span>
+          <span class="sidebar-footnote" data-reactid="128">3031 shares</span>
         </a>
-      </div>      
+      </div>
     </section>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <section *ngFor="let item of anuncios | async">
+    <button (click)="scrollHandler('bottom')">Next</button>
+    <section *ngFor="let item of ps.data | async">
       <span class="previewTitle">{{item.title}}</span>
       <div class="preview">
         <a class="imageHolder">

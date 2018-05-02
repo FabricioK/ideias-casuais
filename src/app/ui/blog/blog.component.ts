@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { PostsService } from '../../services/posts.service';
 import { Observable } from 'rxjs/Observable';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-blog',
@@ -9,20 +10,26 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./blog.component.sass']
 })
 export class BlogComponent implements OnInit {
+  comments: any;
+  offset = 2;
+  nextKey: any; // for next button
+  prevKeys: any[] = []; // for prev button
+  subscription: any;
 
   public anuncios: Observable<any[]>;
 
-  constructor(db: AngularFirestore,ps : PostsService) {
-    db.firestore.settings({ timestampsInSnapshots: true });
-    this.anuncios = ps.getPosts(1,1);
+  constructor(public ps: PostsService) {
+    
   }
 
   scrollHandler(e) {
-    console.log(e)
-    // should log top or bottom
+    if (e === 'bottom') {
+      this.ps.more()
+    }
   }
-  
+
   ngOnInit() {
+    this.ps.init('posts', 'data', { reverse: true, prepend: false })
   }
 
 }
