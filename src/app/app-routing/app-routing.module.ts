@@ -15,7 +15,7 @@ import { NavbarComponent } from '../ui/navbar/navbar.component';
 import { HomepageComponent } from '../ui/homepage/homepage.component';
 import { PageNotFoundComponent } from '../ui/page-not-found/page-not-found.component';
 import { BlogComponent } from '../ui/blog/blog.component';
-
+import { PostsService } from '../services/posts.service';
 
 const appRoutes: Routes = [
   {
@@ -50,7 +50,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     NavbarComponent,
     BlogComponent
-  ]
+  ],
+  providers: [PostsService]
 })
 export class AppRoutingModule {
 

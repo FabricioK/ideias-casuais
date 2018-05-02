@@ -17,10 +17,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
+import { ScrollableDirective } from './directives/scrollable.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ScrollableDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav fxFlex="66" fxFlexOffset="15" #sidenav opened mode="side" position="end">
-    <section class="sidebar-container">
+    <section class="sidebar-container" *ngFor="let item of trending | async">
       <div class="sidebar-label" >
         <span>Trending</span>
       </div>
