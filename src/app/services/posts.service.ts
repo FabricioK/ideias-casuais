@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { QueryConfig } from 'firebase/firestore'
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject ,  Observable } from 'rxjs';
+
 import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/take';
+
 
 export interface QueryConfig {
   path: string;
@@ -49,7 +49,7 @@ export class PostsService {
   loading: Observable<boolean> = this._loading.asObservable();
 
   constructor(private afs: AngularFirestore) { 
-    afs.firestore.settings({ timestampsInSnapshots: true });
+    
   }
 
   // Initial query sets options and defines the Observable
@@ -76,7 +76,7 @@ export class PostsService {
     this.data = this._data.asObservable()
       .scan((acc, val) => {
         return this.query.prepend ? val.concat(acc) : acc.concat(val)
-      })
+      });
   }
 
 

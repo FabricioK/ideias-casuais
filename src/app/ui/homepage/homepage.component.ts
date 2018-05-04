@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface Image {
   criadoem: number,
@@ -29,8 +29,7 @@ export class HomepageComponent implements OnInit {
 
   public anuncios: Observable<any[]>;
   public itens: AngularFirestoreCollection<Post>;
-  constructor(db: AngularFirestore) {
-    db.firestore.settings({ timestampsInSnapshots: true });
+  constructor(db: AngularFirestore) {   
     this.itens = db.collection<Post>('/posts');
     this.anuncios = this.itens.valueChanges().map(posts => {
       posts.map(p => {
