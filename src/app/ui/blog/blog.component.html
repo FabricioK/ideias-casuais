@@ -20,7 +20,7 @@
     <section *ngFor="let item of ps.data | async">
       <span class="previewTitle">{{item.title}}</span>
       <div class="preview">
-        <a class="imageHolder">
+        <a class="imageHolder" *ngIf=item.imageurl>
           <img src="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-437x230.jpg" srcset="https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-437x230.jpg 1x, https://dkru86weszx9t.cloudfront.net/blog/wp-content/uploads/2018/04/Hedging-language-760x400.jpg 2x"
             alt="Grammarly Spotlight: Why Hedging Language Undermines Your Writing">
         </a>

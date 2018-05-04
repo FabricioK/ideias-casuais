@@ -2,6 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
+import { AdsenseModule } from 'ng2-adsense';
+
 import { RouterModule, Routes } from '@angular/router';
 //Angulars
 import { MatCardModule } from '@angular/material/card';
@@ -41,6 +43,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-3591479855211665'
+    }),
     HttpModule
 
   ],
