@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import { GtagModule } from 'angular-gtag';
+
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -43,6 +45,7 @@ import { ScrollableDirective } from './directives/scrollable.directive';
     MatNativeDateModule,
     MatFormFieldModule,
     AppRoutingModule.forRoot(),
+    GtagModule.forRoot({ trackingId: 'UA-118752910-1', trackPageviews: true }),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),

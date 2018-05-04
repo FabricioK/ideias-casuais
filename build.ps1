@@ -1,3 +1,3 @@
-ng build --prod --base-href "http://FabricioK.github.io/ideias-casuais/"
+ng build --prod
 echo "ideiascasuais.com.br" > dist/CNAME
 ngh

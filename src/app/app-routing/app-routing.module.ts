@@ -44,7 +44,8 @@ const appRoutes: Routes = [
       appRoutes
     ),
     AdsenseModule.forRoot({
-      adClient: 'ca-pub-3591479855211665'
+      adClient: 'ca-pub-3591479855211665',
+      pageLevelAds: true
     }),
     HttpModule
 
