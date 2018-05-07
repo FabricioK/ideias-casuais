@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { QueryConfig } from 'firebase/firestore'
 
-import { BehaviorSubject ,  Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
@@ -48,8 +48,8 @@ export class PostsService {
   done: Observable<boolean> = this._done.asObservable();
   loading: Observable<boolean> = this._loading.asObservable();
 
-  constructor(private afs: AngularFirestore) { 
-    
+  constructor(private afs: AngularFirestore) {
+
   }
 
   // Initial query sets options and defines the Observable
@@ -79,7 +79,22 @@ export class PostsService {
       });
   }
 
-
+  add(title: string,content: string) {
+    const id = this.afs.createId();
+    const post: Post = {
+      content: content,
+      criadoem: 1501103235402,
+      imagens: null,
+      style: "",
+      subtitle: "string",
+      tag: "string",
+      title: title,
+      uid: "string",
+      user: "any",
+      since: 1
+    };
+    this.afs.collection(this.query.path).doc(id).set(post);
+  }
   // Retrieves additional data from firestore
   more() {
     const cursor = this.getCursor()
