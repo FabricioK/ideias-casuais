@@ -10,7 +10,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button (click)="scrollHandler('bottom')">Next</button>
+    <button (click)="beforeHandler('bottom')">Next</button>
+    <button (click)="nextHandler('bottom')">Next</button>
     <section *ngFor="let item of ps.data | async">
       <span class="previewTitle">{{item.title}}</span>
       <div class="preview">

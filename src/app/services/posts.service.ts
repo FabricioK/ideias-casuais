@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
+import { OrderByDirection } from '@firebase/firestore-types';
 
 
 export interface QueryConfig {
@@ -48,6 +49,7 @@ export class PostsService {
   done: Observable<boolean> = this._done.asObservable();
   loading: Observable<boolean> = this._loading.asObservable();
 
+  private lastCursor: any[];
   constructor(private afs: AngularFirestore) {
 
   }
@@ -66,20 +68,25 @@ export class PostsService {
 
     const first = this.afs.collection(this.query.path, ref => {
       return ref
-        .orderBy(this.query.field, this.query.reverse ? 'desc' : 'asc')
+        .orderBy(this.query.field, 'asc')
         .limit(this.query.limit)
     })
 
     this.mapAndUpdate(first)
 
     // Create the observable array for consumption in components
+
     this.data = this._data.asObservable()
       .scan((acc, val) => {
-        return this.query.prepend ? val.concat(acc) : acc.concat(val)
+
+        if (acc.length > 0 && val.length == 0)
+          return acc;
+          
+        return acc = val
       });
   }
 
-  add(title: string,content: string) {
+  add(title: string, content: string) {
     const id = this.afs.createId();
     const post: Post = {
       content: content,
@@ -96,26 +103,40 @@ export class PostsService {
     this.afs.collection(this.query.path).doc(id).set(post);
   }
   // Retrieves additional data from firestore
-  more() {
-    const cursor = this.getCursor()
+  next() {
+    const cursor = this.getCursor(true)
 
-    const more = this.afs.collection(this.query.path, ref => {
-      return ref
-        .orderBy(this.query.field, this.query.reverse ? 'desc' : 'asc')
-        .limit(this.query.limit)
-        .startAfter(cursor)
-    })
-    this.mapAndUpdate(more)
+    if (cursor) {
+      const more = this.afs.collection(this.query.path, ref => {
+        return ref
+          .orderBy(this.query.field, 'asc')
+          .limit(this.query.limit)
+          .startAfter(cursor)
+      })
+      this.mapAndUpdate(more)
+    }
   }
 
-
+  // Retrieves additional data from firestore
+  before() {
+    const cursor = this.getCursor(false)
+    if (cursor) {
+      const more = this.afs.collection(this.query.path, ref => {
+        return ref
+          .orderBy(this.query.field, 'desc')
+          .limit(this.query.limit)
+          .startAfter(cursor)
+      })
+      this.mapAndUpdate(more)
+    }
+  }
   // Determines the doc snapshot to paginate query 
-  private getCursor() {
+  private getCursor(asc: boolean) {
     const current = this._data.value
     if (current.length) {
-      return this.query.prepend ? current[0].doc : current[current.length - 1].doc
+      return current[0].doc
     }
-    return null
+    return null;
   }
 
 
@@ -135,12 +156,14 @@ export class PostsService {
           const doc = snap.payload.doc
           return { ...data, doc }
         })
+        values.sort((a: any, b: any) => {
+          return a.data.getTime() - b.data.getTime();
 
-        // If prepending, reverse the batch order
-        values = this.query.prepend ? values.reverse() : values
-
+        });
         // update source with new values, done loading
-        this._data.next(values)
+        if (values)
+          this._data.next(values);
+
         this._loading.next(false)
 
         // no more values, mark done

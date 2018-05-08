@@ -22,9 +22,14 @@ export class BlogComponent implements OnInit {
     
   }
 
-  scrollHandler(e) {
+  nextHandler(e) {
     if (e === 'bottom') {
-      this.ps.more()
+      this.ps.next()
+    }
+  }
+  beforeHandler(e) {
+    if (e === 'bottom') {
+      this.ps.before()
     }
   }
 

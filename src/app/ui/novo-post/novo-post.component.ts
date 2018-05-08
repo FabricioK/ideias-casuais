@@ -16,7 +16,7 @@ export class NovoPostComponent implements OnInit {
   ngOnInit() {
     this.ps.init('posts', 'data', { reverse: true, prepend: false })
   }
-
+  
   save() {
     this.ps.add(this.htmlTitle, this.htmlContent);
   }
